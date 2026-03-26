@@ -1,0 +1,45 @@
+name: Deploy Frontend
+
+on:
+  push:
+    paths:
+      - 'index.html'
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build worker.js from index.html
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - run: |
+          node -e "
+          const fs = require('fs');
+          const html = fs.readFileSync('index.html', 'utf8');
+          const escaped = html.replace(/\\\\/g, '\\\\\\\\').replace(/\\\`/g, '\\\\\\\`').replace(/\\\$/g, '\\\\\\\$');
+          fs.writeFileSync('worker.js', \`const HTML = \\\`\${escaped}\\\`;
+
+          export default {
+            async fetch(request) {
+              return new Response(HTML, {
+                headers: { 'Content-Type': 'text/html; charset=utf-8' },
+              });
+            }
+          };\`);
+          console.log('Built worker.js:', fs.statSync('worker.js').size, 'bytes');
+          "
+
+      - name: Deploy Worker
+        run: |
+          curl -sf -X PUT \
+            "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CF_ACCOUNT_ID }}/workers/scripts/ima-skills-rank" \
+            -H "Authorization: Bearer ${{ secrets.CF_API_TOKEN }}" \
+            -F "worker.js=@worker.js;type=application/javascript+module" \
+            -F 'metadata={"main_module":"worker.js"};type=application/json'
