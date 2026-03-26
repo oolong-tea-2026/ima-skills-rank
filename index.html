@@ -90,12 +90,18 @@ header .meta { color: var(--text-muted); font-size: 0.82rem; margin-top: 0.4rem;
 .keyword-text {
   font-size: 0.85rem;
   color: var(--text);
+  text-decoration: none;
   flex: 1;
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.keyword-text:hover { color: var(--accent); }
+
+.skill-header a:hover .name { color: var(--accent); }
+.skill-header a:hover .slug { color: var(--accent); }
 
 .keyword-rank {
   flex-shrink: 0;
@@ -268,7 +274,7 @@ function render(config, snapshot) {
 
     html += `<div class="skill-card">`;
     html += `<div class="skill-header">`;
-    html += `<div><div class="name">${esc(skill.displayName)}</div><div class="slug">${esc(skill.slug)}</div></div>`;
+    html += `<div><a href="https://clawhub.ai/skills/${encodeURIComponent(skill.slug)}" target="_blank" style="text-decoration:none;color:inherit"><div class="name">${esc(skill.displayName)}</div><div class="slug">${esc(skill.slug)}</div></a></div>`;
     html += `<div class="skill-stats">`;
     html += `<span class="stat" style="background:rgba(88,166,255,0.1);color:var(--accent)">${ranked.length}/${skillResults.length}</span>`;
     if (bestRank !== null) {
@@ -297,7 +303,7 @@ function render(config, snapshot) {
       const scoreText = r.score != null ? r.score.toFixed(2) : "";
 
       html += `<div class="keyword-row">`;
-      html += `<span class="keyword-text">${esc(r.keyword)}</span>`;
+      html += `<a href="https://clawhub.ai/skills?q=${encodeURIComponent(r.keyword)}" target="_blank" class="keyword-text">${esc(r.keyword)}</a>`;
       html += `<div class="keyword-rank">`;
       if (scoreText) html += `<span class="score-text">${scoreText}</span>`;
       html += `<span class="rank-badge ${cls}">${rankText}</span>`;
