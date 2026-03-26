@@ -112,16 +112,22 @@ header .meta { color: var(--text-muted); font-size: 0.82rem; margin-top: 0.4rem;
   min-width: 2.4rem;
   padding: 0.2rem 0.5rem;
   border-radius: 6px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.82rem;
   font-variant-numeric: tabular-nums;
+  color: #fff;
 }
 
-.rank-top5 { background: rgba(63,185,80,0.15); color: var(--green); }
-.rank-top10 { background: rgba(88,166,255,0.15); color: var(--accent); }
-.rank-top20 { background: rgba(210,153,34,0.15); color: var(--yellow); }
-.rank-top50 { background: rgba(219,109,40,0.15); color: var(--orange); }
-.rank-none { background: rgba(139,148,158,0.08); color: var(--text-muted); font-weight: 400; font-size: 0.78rem; }
+/* 1-5: strong green */
+.rank-top5 { background: #1a7f37; }
+/* 6-10: teal green */
+.rank-top10 { background: #2e8b57; }
+/* 11-25: olive/yellow-green */
+.rank-top25 { background: #7c6c1a; }
+/* 26-50: orange */
+.rank-top50 { background: #c4500a; }
+/* 50+: red */
+.rank-none { background: #b91c1c; font-weight: 600; font-size: 0.78rem; }
 
 .score-text {
   font-size: 0.7rem;
@@ -267,7 +273,7 @@ function render(config, snapshot) {
     html += `<div class="skill-stats">`;
     html += `<span class="stat" style="background:rgba(88,166,255,0.1);color:var(--accent)">${ranked.length}/${skillResults.length}</span>`;
     if (bestRank !== null) {
-      const cls = bestRank <= 5 ? "--green" : bestRank <= 10 ? "--accent" : bestRank <= 20 ? "--yellow" : "--orange";
+      const cls = bestRank <= 5 ? "--green" : bestRank <= 10 ? "--green" : bestRank <= 25 ? "--yellow" : "--orange";
       html += `<span class="stat" style="background:rgba(88,166,255,0.1);color:var(${cls})">best #${bestRank}</span>`;
     }
     html += `</div></div>`;
@@ -285,7 +291,8 @@ function render(config, snapshot) {
       const cls = r.rank === null ? "rank-none"
         : r.rank <= 5 ? "rank-top5"
         : r.rank <= 10 ? "rank-top10"
-        : r.rank <= 20 ? "rank-top20" : "rank-top50";
+        : r.rank <= 25 ? "rank-top25"
+        : "rank-top50";
 
       const rankText = r.rank === null ? `${snapshot.searchLimit}+` : `#${r.rank}`;
       const scoreText = r.score != null ? r.score.toFixed(2) : "";
