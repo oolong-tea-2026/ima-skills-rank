@@ -1,0 +1,95 @@
+{
+  "skills": [
+    {
+      "slug": "ima-all-ai",
+      "displayName": "IMA Studio All-in-One",
+      "keywords": [
+        "AI generator",
+        "AI ad generator",
+        "social media content generator",
+        "AI creative generator",
+        "AI marketing content generator",
+        "ima",
+        "ima studio"
+      ]
+    },
+    {
+      "slug": "ima-video-ai",
+      "displayName": "IMA Studio Video",
+      "keywords": [
+        "AI video generator",
+        "video generator",
+        "short video generator",
+        "promo video generator",
+        "image to video",
+        "ima",
+        "ima studio"
+      ]
+    },
+    {
+      "slug": "ima-image-ai",
+      "displayName": "IMA Studio Image",
+      "keywords": [
+        "AI image generator",
+        "image generator",
+        "AI poster generator",
+        "thumbnail generator",
+        "AI thumbnail generator",
+        "ima",
+        "ima studio"
+      ]
+    },
+    {
+      "slug": "ima-voice-ai",
+      "displayName": "IMA Studio Music",
+      "keywords": [
+        "AI voice generator",
+        "AI voiceover generator",
+        "voiceover generator",
+        "AI narration",
+        "narration generator",
+        "ima",
+        "ima studio"
+      ]
+    },
+    {
+      "slug": "ima-knowledge-ai",
+      "displayName": "IMA Knowledge Base",
+      "keywords": [
+        "AI brief generator",
+        "content brief generator",
+        "script generator",
+        "outline generator",
+        "AI research assistant",
+        "ima",
+        "ima studio"
+      ]
+    },
+    {
+      "slug": "ai-nano-banana-ima",
+      "displayName": "AI Nano Banana IMA",
+      "keywords": [
+        "AI image generator",
+        "character generator",
+        "meme generator",
+        "AI art generator",
+        "social media image generator",
+        "ima",
+        "ima studio"
+      ]
+    },
+    {
+      "slug": "ima-tts-ai",
+      "displayName": "IMA Studio TTS",
+      "keywords": [
+        "text to speech",
+        "AI text to speech",
+        "TTS generator",
+        "AI voice generator",
+        "voiceover generator",
+        "ima",
+        "ima studio"
+      ]
+    }
+  ]
+}

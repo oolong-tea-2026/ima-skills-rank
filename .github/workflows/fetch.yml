@@ -1,0 +1,33 @@
+name: Fetch Rankings
+
+on:
+  schedule:
+    # Run daily at 06:00 UTC (14:00 CST)
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Fetch rankings
+        run: node fetch-ranks.js
+
+      - name: Commit and push
+        run: |
+          git config user.name "Oolong Tea"
+          git config user.email "oolongtea202603@163.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "data: ranking snapshot $(date -u +%Y-%m-%d)"
+            git push
+          fi

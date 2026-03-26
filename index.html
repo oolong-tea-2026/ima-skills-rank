@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IMA Skills Rank Tracker</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --accent: #58a6ff;
+  --green: #3fb950;
+  --yellow: #d29922;
+  --orange: #db6d28;
+  --red: #f85149;
+  --purple: #bc8cff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+
+header { text-align: center; margin-bottom: 2rem; }
+header h1 { font-size: 1.6rem; font-weight: 600; }
+header h1 span { color: var(--accent); }
+header .meta { color: var(--text-muted); font-size: 0.85rem; margin-top: 0.4rem; }
+
+/* Summary cards */
+.summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.summary-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.summary-card .value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.summary-card .label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Rank matrix */
+.matrix-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+  border-bottom: 2px solid var(--border);
+  padding: 0.6rem 0.5rem;
+  text-align: center;
+  font-weight: 500;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+thead th:first-child {
+  text-align: left;
+  padding-left: 0.75rem;
+  min-width: 160px;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+}
+
+tbody td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+tbody td:first-child {
+  text-align: left;
+  padding-left: 0.75rem;
+  font-weight: 500;
+  position: sticky;
+  left: 0;
+  background: var(--surface);
+  z-index: 1;
+}
+
+tbody tr:hover td { background: rgba(88, 166, 255, 0.04); }
+tbody tr:hover td:first-child { background: rgba(88, 166, 255, 0.08); }
+
+.skill-name { font-size: 0.82rem; }
+.skill-slug { font-size: 0.7rem; color: var(--text-muted); font-family: monospace; }
+
+/* Rank badges */
+.rank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.2rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.rank-top5 { background: rgba(63,185,80,0.15); color: var(--green); }
+.rank-top10 { background: rgba(88,166,255,0.15); color: var(--accent); }
+.rank-top20 { background: rgba(210,153,34,0.15); color: var(--yellow); }
+.rank-top50 { background: rgba(219,109,40,0.15); color: var(--orange); }
+.rank-none {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 400;
+  opacity: 0.5;
+}
+
+.score-tip {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-top: 0.1rem;
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+/* Loading / error */
+.loading, .error-msg {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-muted);
+}
+
+.error-msg { color: var(--red); }
+
+.spinner {
+  display: inline-block;
+  width: 24px; height: 24px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin-bottom: 0.5rem;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* Refresh button */
+.refresh-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.refresh-btn:hover { border-color: var(--accent); color: var(--text); }
+.refresh-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+@media (max-width: 768px) {
+  .container { padding: 0.75rem; }
+  table { font-size: 0.78rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>🐾 <span>IMA Skills</span> Rank Tracker</h1>
+    <div class="meta" id="meta">Loading...</div>
+  </header>
+
+  <div id="summary" class="summary" style="display:none"></div>
+  <div id="content"><div class="loading"><div class="spinner"></div><br>Fetching ranking data...</div></div>
+
+  <div class="legend" id="legend" style="display:none">
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(63,185,80,0.3)"></div> Top 5</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(88,166,255,0.3)"></div> Top 10</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(210,153,34,0.3)"></div> Top 20</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(219,109,40,0.3)"></div> Top 50</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(139,148,158,0.2)"></div> Not ranked</div>
+  </div>
+
+  <footer>
+    Data from <a href="https://clawhub.com" target="_blank">ClawHub</a> search API
+    · <a href="https://api.wulong.dev/ima-rank/v1" target="_blank">API</a>
+    · <a href="https://github.com/oolong-tea-2026/ima-skills-rank" target="_blank">Source</a>
+  </footer>
+</div>
+
+<script>
+const API = "https://api.wulong.dev/ima-rank/v1";
+
+async function load() {
+  try {
+    const [configResp, snapshotResp] = await Promise.all([
+      fetch(`${API}/config`),
+      fetch(`${API}/snapshot?date=latest`),
+    ]);
+
+    if (!configResp.ok || !snapshotResp.ok) {
+      throw new Error(`API error: config=${configResp.status}, snapshot=${snapshotResp.status}`);
+    }
+
+    const config = await configResp.json();
+    const snapshot = await snapshotResp.json();
+    render(config, snapshot);
+  } catch (e) {
+    document.getElementById("content").innerHTML =
+      `<div class="error-msg">Failed to load data: ${esc(e.message)}</div>`;
+    document.getElementById("meta").textContent = "Error loading data";
+  }
+}
+
+function render(config, snapshot) {
+  const skills = config.skills;
+  // Build lookup: skill+keyword → result
+  const lookup = {};
+  for (const r of snapshot.results) {
+    lookup[`${r.skill}|${r.keyword}`] = r;
+  }
+
+  // Get all unique keywords in order (deduplicate, but keep per-skill order)
+  // Group: first show non-brand keywords, then "ima" / "ima studio" at end
+  const brandKws = ["ima", "ima studio"];
+  const allKws = [...new Set(skills.flatMap(s => s.keywords))];
+  const topicKws = allKws.filter(k => !brandKws.includes(k));
+  const orderedKws = [...topicKws, ...brandKws];
+
+  // Update meta
+  const ts = new Date(snapshot.timestamp);
+  document.getElementById("meta").innerHTML =
+    `Snapshot: <strong>${ts.toLocaleDateString()}</strong> ${ts.toLocaleTimeString()}` +
+    ` · ${snapshot.totalCombos} combos · Search limit: top ${snapshot.searchLimit}` +
+    ` <button class="refresh-btn" onclick="location.reload()">↻ Refresh</button>`;
+
+  // Summary cards
+  const s = snapshot.summary;
+  const summaryEl = document.getElementById("summary");
+  summaryEl.style.display = "";
+  summaryEl.innerHTML = `
+    <div class="summary-card"><div class="value" style="color:var(--green)">${s.top5}</div><div class="label">Top 5</div></div>
+    <div class="summary-card"><div class="value" style="color:var(--accent)">${s.top10}</div><div class="label">Top 10</div></div>
+    <div class="summary-card"><div class="value" style="color:var(--yellow)">${s.top20}</div><div class="label">Top 20</div></div>
+    <div class="summary-card"><div class="value" style="color:var(--orange)">${s.ranked}</div><div class="label">Ranked</div></div>
+    <div class="summary-card"><div class="value" style="color:var(--text-muted)">${s.unranked}</div><div class="label">Unranked</div></div>
+    <div class="summary-card"><div class="value">${snapshot.totalCombos}</div><div class="label">Total</div></div>
+  `;
+
+  // Matrix table
+  let html = '<div class="matrix-wrapper"><table><thead><tr><th>Skill</th>';
+  for (const kw of orderedKws) {
+    html += `<th>${esc(kw)}</th>`;
+  }
+  html += '</tr></thead><tbody>';
+
+  for (const skill of skills) {
+    html += `<tr><td><div class="skill-name">${esc(skill.displayName)}</div><div class="skill-slug">${esc(skill.slug)}</div></td>`;
+
+    for (const kw of orderedKws) {
+      const r = lookup[`${skill.slug}|${kw}`];
+
+      if (!r || !skill.keywords.includes(kw)) {
+        // This keyword is not a target for this skill
+        html += '<td><span style="opacity:0.2">·</span></td>';
+        continue;
+      }
+
+      if (r.rank === null) {
+        html += `<td><span class="rank rank-none">${snapshot.searchLimit}+</span></td>`;
+      } else {
+        const cls = r.rank <= 5 ? "rank-top5" : r.rank <= 10 ? "rank-top10" : r.rank <= 20 ? "rank-top20" : "rank-top50";
+        html += `<td><span class="rank ${cls}">#${r.rank}</span>`;
+        if (r.score != null) {
+          html += `<div class="score-tip">${r.score.toFixed(2)}</div>`;
+        }
+        html += '</td>';
+      }
+    }
+    html += '</tr>';
+  }
+
+  html += '</tbody></table></div>';
+  document.getElementById("content").innerHTML = html;
+  document.getElementById("legend").style.display = "";
+}
+
+function esc(s) {
+  if (!s) return "";
+  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+load();
+</script>
+</body>
+</html>
