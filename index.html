@@ -157,6 +157,35 @@ header .meta { color: var(--text-muted); font-size: 0.82rem; margin-top: 0.4rem;
 .legend-item { display: flex; align-items: center; gap: 0.25rem; }
 .legend-dot { width: 8px; height: 8px; border-radius: 3px; }
 
+/* Date nav */
+.date-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.date-nav .current {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.date-nav a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.date-nav a:hover { text-decoration: underline; }
+
+.date-nav .disabled {
+  color: var(--border);
+  cursor: default;
+  pointer-events: none;
+}
+
 /* Loading / error */
 .loading { text-align: center; padding: 3rem; color: var(--text-muted); }
 
@@ -173,22 +202,6 @@ header .meta { color: var(--text-muted); font-size: 0.82rem; margin-top: 0.4rem;
 @keyframes spin { to { transform: rotate(360deg); } }
 
 .error-msg { text-align: center; padding: 3rem; color: var(--red); }
-
-.refresh-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  padding: 0.25rem 0.6rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  color: var(--text-muted);
-  font-size: 0.78rem;
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-.refresh-btn:hover { border-color: var(--accent); color: var(--text); }
 
 footer {
   text-align: center;
@@ -227,47 +240,70 @@ footer a:hover { text-decoration: underline; }
 <script>
 const API = "https://api.wulong.dev/ima-rank/v1";
 
-async function load() {
+let indexData = null; // { dates: [...], latest: "2026-03-26" }
+
+async function load(date) {
   try {
-    const [configResp, snapshotResp] = await Promise.all([
-      fetch(`${API}/config`),
-      fetch(`${API}/snapshot?date=latest`),
-    ]);
+    // Fetch index + config in parallel (always need these)
+    const fetches = [fetch(`${API}/config`)];
+    if (!indexData) fetches.push(fetch(`${API}/index`));
 
-    if (!configResp.ok || !snapshotResp.ok) {
-      throw new Error(`API error: config=${configResp.status}, snapshot=${snapshotResp.status}`);
-    }
+    const responses = await Promise.all(fetches);
+    const config = await responses[0].json();
+    if (responses[1]) indexData = await responses[1].json();
 
-    const config = await configResp.json();
+    // Determine which date to load
+    const targetDate = date || indexData.latest;
+
+    const snapshotResp = await fetch(`${API}/snapshot?date=${targetDate}`);
+    if (!snapshotResp.ok) throw new Error(`Snapshot not found for ${targetDate}`);
     const snapshot = await snapshotResp.json();
-    render(config, snapshot);
+
+    render(config, snapshot, targetDate);
   } catch (e) {
     document.getElementById("content").innerHTML =
       `<div class="error-msg">Failed to load: ${esc(e.message)}</div>`;
   }
 }
 
-function render(config, snapshot) {
+function navigateTo(date) {
+  document.getElementById("content").innerHTML =
+    '<div class="loading"><div class="spinner"></div><br>Loading...</div>';
+  load(date);
+}
+
+function render(config, snapshot, currentDate) {
+  // Build date nav
+  const dates = indexData.dates;
+  const idx = dates.indexOf(currentDate);
+  const prevDate = idx > 0 ? dates[idx - 1] : null;
+  const nextDate = idx < dates.length - 1 ? dates[idx + 1] : null;
+
+  let navHtml = '<div class="date-nav">';
+  if (prevDate) {
+    navHtml += `<a onclick="navigateTo('${prevDate}')">← ${prevDate}</a>`;
+  } else {
+    navHtml += `<span class="disabled">← prev</span>`;
+  }
+  navHtml += `<span class="current">${currentDate}</span>`;
+  if (nextDate) {
+    navHtml += `<a onclick="navigateTo('${nextDate}')">${nextDate} →</a>`;
+  } else {
+    navHtml += `<span class="disabled">next →</span>`;
+  }
+  navHtml += '</div>';
+  document.getElementById("meta").innerHTML = navHtml;
+
   // Build lookup: skill+keyword → result
   const lookup = {};
   for (const r of snapshot.results) {
     lookup[`${r.skill}|${r.keyword}`] = r;
   }
 
-  // Meta
-  const ts = new Date(snapshot.timestamp);
-  document.getElementById("meta").innerHTML =
-    `${ts.toLocaleDateString()} ${ts.toLocaleTimeString()} ` +
-    `<button class="refresh-btn" onclick="location.reload()">↻</button>`;
-
-  // Summary - removed
-  // Legend - removed
-
   // Skill cards
   let html = '<div class="skills-grid">';
 
   for (const skill of config.skills) {
-    // Compute per-skill stats
     const skillResults = skill.keywords.map(kw => lookup[`${skill.slug}|${kw}`]).filter(Boolean);
     const ranked = skillResults.filter(r => r.rank !== null);
     const bestRank = ranked.length ? Math.min(...ranked.map(r => r.rank)) : null;
@@ -284,7 +320,6 @@ function render(config, snapshot) {
     html += `</div></div>`;
 
     html += `<div class="keyword-list">`;
-    // Sort: ranked first (by rank asc), then unranked
     const sorted = [...skillResults].sort((a, b) => {
       if (a.rank === null && b.rank === null) return 0;
       if (a.rank === null) return 1;
