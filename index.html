@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IMA Skills Rank Tracker</title>
+<title>IMA Skills ClawHub Ranks</title>
 <style>
 :root {
   --bg: #0d1117;
@@ -205,7 +205,7 @@ footer a:hover { text-decoration: underline; }
 <body>
 <div class="container">
   <header>
-    <h1>🐾 <span>IMA Skills</span> Rank Tracker</h1>
+    <h1>🐾 <span>IMA Skills</span> ClawHub Ranks</h1>
     <div class="meta" id="meta">Loading...</div>
   </header>
 
@@ -251,8 +251,7 @@ function render(config, snapshot) {
   // Meta
   const ts = new Date(snapshot.timestamp);
   document.getElementById("meta").innerHTML =
-    `${ts.toLocaleDateString()} ${ts.toLocaleTimeString()} · ` +
-    `${snapshot.totalCombos} keywords tracked ` +
+    `${ts.toLocaleDateString()} ${ts.toLocaleTimeString()} ` +
     `<button class="refresh-btn" onclick="location.reload()">↻</button>`;
 
   // Summary - removed
