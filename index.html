@@ -16,7 +16,6 @@
   --yellow: #d29922;
   --orange: #db6d28;
   --red: #f85149;
-  --purple: #bc8cff;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,108 +28,111 @@ body {
   min-height: 100vh;
 }
 
-.container { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+.container { max-width: 1100px; margin: 0 auto; padding: 1.5rem; }
 
-header { text-align: center; margin-bottom: 2rem; }
-header h1 { font-size: 1.6rem; font-weight: 600; }
+header { text-align: center; margin-bottom: 1.5rem; }
+header h1 { font-size: 1.5rem; font-weight: 600; }
 header h1 span { color: var(--accent); }
-header .meta { color: var(--text-muted); font-size: 0.85rem; margin-top: 0.4rem; }
+header .meta { color: var(--text-muted); font-size: 0.82rem; margin-top: 0.4rem; }
 
-/* Summary cards */
+/* Summary bar */
 .summary {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
   margin-bottom: 1.5rem;
 }
 
-.summary-card {
+.summary-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.7rem;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 0.75rem;
-  text-align: center;
+  border-radius: 20px;
+  font-size: 0.78rem;
 }
 
-.summary-card .value {
-  font-size: 1.8rem;
-  font-weight: 700;
+.summary-pill .num { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Skill cards */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1rem;
+}
+
+.skill-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.skill-header {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skill-header .name { font-weight: 600; font-size: 0.95rem; }
+.skill-header .slug { font-size: 0.72rem; color: var(--text-muted); font-family: monospace; }
+
+.skill-stats {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+}
+
+.skill-stats .stat {
+  padding: 0.15rem 0.45rem;
+  border-radius: 10px;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
 
-.summary-card .label {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.keyword-list { padding: 0; }
+
+.keyword-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid rgba(48,54,61,0.5);
+  transition: background 0.1s;
 }
 
-/* Rank matrix */
-.matrix-wrapper {
-  overflow-x: auto;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface);
-}
+.keyword-row:last-child { border-bottom: none; }
+.keyword-row:hover { background: rgba(88,166,255,0.04); }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+.keyword-text {
   font-size: 0.85rem;
-}
-
-thead th {
-  position: sticky;
-  top: 0;
-  background: var(--surface);
-  border-bottom: 2px solid var(--border);
-  padding: 0.6rem 0.5rem;
-  text-align: center;
-  font-weight: 500;
-  color: var(--text-muted);
-  font-size: 0.78rem;
+  color: var(--text);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-thead th:first-child {
-  text-align: left;
-  padding-left: 0.75rem;
-  min-width: 160px;
-  position: sticky;
-  left: 0;
-  z-index: 2;
+.keyword-rank {
+  flex-shrink: 0;
+  margin-left: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-tbody td {
-  border-bottom: 1px solid var(--border);
-  padding: 0.5rem;
-  text-align: center;
-  vertical-align: middle;
-}
-
-tbody td:first-child {
-  text-align: left;
-  padding-left: 0.75rem;
-  font-weight: 500;
-  position: sticky;
-  left: 0;
-  background: var(--surface);
-  z-index: 1;
-}
-
-tbody tr:hover td { background: rgba(88, 166, 255, 0.04); }
-tbody tr:hover td:first-child { background: rgba(88, 166, 255, 0.08); }
-
-.skill-name { font-size: 0.82rem; }
-.skill-slug { font-size: 0.7rem; color: var(--text-muted); font-family: monospace; }
-
-/* Rank badges */
-.rank {
+.rank-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 2.2rem;
-  padding: 0.2rem 0.4rem;
+  min-width: 2.4rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 6px;
   font-weight: 600;
   font-size: 0.82rem;
@@ -141,55 +143,37 @@ tbody tr:hover td:first-child { background: rgba(88, 166, 255, 0.08); }
 .rank-top10 { background: rgba(88,166,255,0.15); color: var(--accent); }
 .rank-top20 { background: rgba(210,153,34,0.15); color: var(--yellow); }
 .rank-top50 { background: rgba(219,109,40,0.15); color: var(--orange); }
-.rank-none {
-  color: var(--text-muted);
-  font-size: 0.75rem;
-  font-weight: 400;
-  opacity: 0.5;
-}
+.rank-none { background: rgba(139,148,158,0.08); color: var(--text-muted); font-weight: 400; font-size: 0.78rem; }
 
-.score-tip {
-  font-size: 0.65rem;
+.score-text {
+  font-size: 0.7rem;
   color: var(--text-muted);
-  margin-top: 0.1rem;
+  font-variant-numeric: tabular-nums;
+  min-width: 3rem;
+  text-align: right;
 }
 
 /* Legend */
 .legend {
   display: flex;
-  gap: 1.25rem;
+  gap: 1rem;
   justify-content: center;
-  margin-top: 1rem;
-  font-size: 0.78rem;
+  margin-top: 1.25rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   flex-wrap: wrap;
 }
 
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
-.legend-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 3px;
-}
+.legend-item { display: flex; align-items: center; gap: 0.25rem; }
+.legend-dot { width: 8px; height: 8px; border-radius: 3px; }
 
 /* Loading / error */
-.loading, .error-msg {
-  text-align: center;
-  padding: 3rem;
-  color: var(--text-muted);
-}
-
-.error-msg { color: var(--red); }
+.loading { text-align: center; padding: 3rem; color: var(--text-muted); }
 
 .spinner {
   display: inline-block;
-  width: 24px; height: 24px;
-  border: 3px solid var(--border);
+  width: 22px; height: 22px;
+  border: 2.5px solid var(--border);
   border-top-color: var(--accent);
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
@@ -198,39 +182,39 @@ tbody tr:hover td:first-child { background: rgba(88, 166, 255, 0.08); }
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
+.error-msg { text-align: center; padding: 3rem; color: var(--red); }
+
+.refresh-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.6rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.refresh-btn:hover { border-color: var(--accent); color: var(--text); }
+
 footer {
   text-align: center;
   margin-top: 2rem;
   padding-top: 1rem;
   border-top: 1px solid var(--border);
   color: var(--text-muted);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
 }
 
 footer a { color: var(--accent); text-decoration: none; }
 footer a:hover { text-decoration: underline; }
 
-/* Refresh button */
-.refresh-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.4rem 0.8rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  color: var(--text-muted);
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-.refresh-btn:hover { border-color: var(--accent); color: var(--text); }
-.refresh-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-@media (max-width: 768px) {
-  .container { padding: 0.75rem; }
-  table { font-size: 0.78rem; }
+@media (max-width: 640px) {
+  .skills-grid { grid-template-columns: 1fr; }
+  .container { padding: 1rem; }
 }
 </style>
 </head>
@@ -249,7 +233,7 @@ footer a:hover { text-decoration: underline; }
     <div class="legend-item"><div class="legend-dot" style="background:rgba(88,166,255,0.3)"></div> Top 10</div>
     <div class="legend-item"><div class="legend-dot" style="background:rgba(210,153,34,0.3)"></div> Top 20</div>
     <div class="legend-item"><div class="legend-dot" style="background:rgba(219,109,40,0.3)"></div> Top 50</div>
-    <div class="legend-item"><div class="legend-dot" style="background:rgba(139,148,158,0.2)"></div> Not ranked</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(139,148,158,0.15)"></div> 50+</div>
   </div>
 
   <footer>
@@ -278,87 +262,93 @@ async function load() {
     render(config, snapshot);
   } catch (e) {
     document.getElementById("content").innerHTML =
-      `<div class="error-msg">Failed to load data: ${esc(e.message)}</div>`;
-    document.getElementById("meta").textContent = "Error loading data";
+      `<div class="error-msg">Failed to load: ${esc(e.message)}</div>`;
   }
 }
 
 function render(config, snapshot) {
-  const skills = config.skills;
   // Build lookup: skill+keyword → result
   const lookup = {};
   for (const r of snapshot.results) {
     lookup[`${r.skill}|${r.keyword}`] = r;
   }
 
-  // Get all unique keywords in order (deduplicate, but keep per-skill order)
-  // Group: first show non-brand keywords, then "ima" / "ima studio" at end
-  const brandKws = ["ima", "ima studio"];
-  const allKws = [...new Set(skills.flatMap(s => s.keywords))];
-  const topicKws = allKws.filter(k => !brandKws.includes(k));
-  const orderedKws = [...topicKws, ...brandKws];
-
-  // Update meta
+  // Meta
   const ts = new Date(snapshot.timestamp);
   document.getElementById("meta").innerHTML =
-    `Snapshot: <strong>${ts.toLocaleDateString()}</strong> ${ts.toLocaleTimeString()}` +
-    ` · ${snapshot.totalCombos} combos · Search limit: top ${snapshot.searchLimit}` +
-    ` <button class="refresh-btn" onclick="location.reload()">↻ Refresh</button>`;
+    `${ts.toLocaleDateString()} ${ts.toLocaleTimeString()} · ` +
+    `${snapshot.totalCombos} keywords tracked ` +
+    `<button class="refresh-btn" onclick="location.reload()">↻</button>`;
 
-  // Summary cards
+  // Summary
   const s = snapshot.summary;
   const summaryEl = document.getElementById("summary");
   summaryEl.style.display = "";
   summaryEl.innerHTML = `
-    <div class="summary-card"><div class="value" style="color:var(--green)">${s.top5}</div><div class="label">Top 5</div></div>
-    <div class="summary-card"><div class="value" style="color:var(--accent)">${s.top10}</div><div class="label">Top 10</div></div>
-    <div class="summary-card"><div class="value" style="color:var(--yellow)">${s.top20}</div><div class="label">Top 20</div></div>
-    <div class="summary-card"><div class="value" style="color:var(--orange)">${s.ranked}</div><div class="label">Ranked</div></div>
-    <div class="summary-card"><div class="value" style="color:var(--text-muted)">${s.unranked}</div><div class="label">Unranked</div></div>
-    <div class="summary-card"><div class="value">${snapshot.totalCombos}</div><div class="label">Total</div></div>
+    <div class="summary-pill"><span class="num" style="color:var(--green)">${s.top5}</span> top 5</div>
+    <div class="summary-pill"><span class="num" style="color:var(--accent)">${s.top10}</span> top 10</div>
+    <div class="summary-pill"><span class="num" style="color:var(--yellow)">${s.top20}</span> top 20</div>
+    <div class="summary-pill"><span class="num" style="color:var(--orange)">${s.ranked}</span> ranked</div>
+    <div class="summary-pill"><span class="num" style="color:var(--text-muted)">${s.unranked}</span> unranked</div>
   `;
 
-  // Matrix table
-  let html = '<div class="matrix-wrapper"><table><thead><tr><th>Skill</th>';
-  for (const kw of orderedKws) {
-    html += `<th>${esc(kw)}</th>`;
-  }
-  html += '</tr></thead><tbody>';
+  // Skill cards
+  let html = '<div class="skills-grid">';
 
-  for (const skill of skills) {
-    html += `<tr><td><div class="skill-name">${esc(skill.displayName)}</div><div class="skill-slug">${esc(skill.slug)}</div></td>`;
+  for (const skill of config.skills) {
+    // Compute per-skill stats
+    const skillResults = skill.keywords.map(kw => lookup[`${skill.slug}|${kw}`]).filter(Boolean);
+    const ranked = skillResults.filter(r => r.rank !== null);
+    const bestRank = ranked.length ? Math.min(...ranked.map(r => r.rank)) : null;
 
-    for (const kw of orderedKws) {
-      const r = lookup[`${skill.slug}|${kw}`];
-
-      if (!r || !skill.keywords.includes(kw)) {
-        // This keyword is not a target for this skill
-        html += '<td><span style="opacity:0.2">·</span></td>';
-        continue;
-      }
-
-      if (r.rank === null) {
-        html += `<td><span class="rank rank-none">${snapshot.searchLimit}+</span></td>`;
-      } else {
-        const cls = r.rank <= 5 ? "rank-top5" : r.rank <= 10 ? "rank-top10" : r.rank <= 20 ? "rank-top20" : "rank-top50";
-        html += `<td><span class="rank ${cls}">#${r.rank}</span>`;
-        if (r.score != null) {
-          html += `<div class="score-tip">${r.score.toFixed(2)}</div>`;
-        }
-        html += '</td>';
-      }
+    html += `<div class="skill-card">`;
+    html += `<div class="skill-header">`;
+    html += `<div><div class="name">${esc(skill.displayName)}</div><div class="slug">${esc(skill.slug)}</div></div>`;
+    html += `<div class="skill-stats">`;
+    html += `<span class="stat" style="background:rgba(88,166,255,0.1);color:var(--accent)">${ranked.length}/${skillResults.length}</span>`;
+    if (bestRank !== null) {
+      const cls = bestRank <= 5 ? "--green" : bestRank <= 10 ? "--accent" : bestRank <= 20 ? "--yellow" : "--orange";
+      html += `<span class="stat" style="background:rgba(88,166,255,0.1);color:var(${cls})">best #${bestRank}</span>`;
     }
-    html += '</tr>';
+    html += `</div></div>`;
+
+    html += `<div class="keyword-list">`;
+    // Sort: ranked first (by rank asc), then unranked
+    const sorted = [...skillResults].sort((a, b) => {
+      if (a.rank === null && b.rank === null) return 0;
+      if (a.rank === null) return 1;
+      if (b.rank === null) return -1;
+      return a.rank - b.rank;
+    });
+
+    for (const r of sorted) {
+      const cls = r.rank === null ? "rank-none"
+        : r.rank <= 5 ? "rank-top5"
+        : r.rank <= 10 ? "rank-top10"
+        : r.rank <= 20 ? "rank-top20" : "rank-top50";
+
+      const rankText = r.rank === null ? `${snapshot.searchLimit}+` : `#${r.rank}`;
+      const scoreText = r.score != null ? r.score.toFixed(2) : "";
+
+      html += `<div class="keyword-row">`;
+      html += `<span class="keyword-text">${esc(r.keyword)}</span>`;
+      html += `<div class="keyword-rank">`;
+      if (scoreText) html += `<span class="score-text">${scoreText}</span>`;
+      html += `<span class="rank-badge ${cls}">${rankText}</span>`;
+      html += `</div></div>`;
+    }
+
+    html += `</div></div>`;
   }
 
-  html += '</tbody></table></div>';
+  html += '</div>';
   document.getElementById("content").innerHTML = html;
   document.getElementById("legend").style.display = "";
 }
 
 function esc(s) {
   if (!s) return "";
-  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 }
 
 load();
