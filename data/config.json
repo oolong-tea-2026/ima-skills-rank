@@ -90,6 +90,19 @@
         "ima",
         "ima studio"
       ]
+    },
+    {
+      "slug": "ima-ai-video-generator",
+      "displayName": "IMA AI Video Generator (SDO)",
+      "keywords": [
+        "AI video generator",
+        "video generator",
+        "short video generator",
+        "promo video generator",
+        "image to video",
+        "ima",
+        "ima studio"
+      ]
     }
   ]
 }
