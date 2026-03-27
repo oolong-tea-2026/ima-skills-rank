@@ -253,7 +253,7 @@ async function load(date) {
     if (responses[1]) indexData = await responses[1].json();
 
     // Determine which date to load
-    const targetDate = date || indexData.latest;
+    const targetDate = date || indexData.latest || (indexData.dates && indexData.dates[indexData.dates.length - 1]);
 
     const snapshotResp = await fetch(`${API}/snapshot?date=${targetDate}`);
     if (!snapshotResp.ok) throw new Error(`Snapshot not found for ${targetDate}`);
