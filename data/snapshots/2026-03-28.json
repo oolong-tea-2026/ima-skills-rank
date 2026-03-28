@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-03-28T10:24:20.046Z",
+  "timestamp": "2026-03-28T11:03:03.221Z",
   "searchLimit": 50,
-  "totalCombos": 80,
+  "totalCombos": 95,
   "summary": {
-    "ranked": 38,
-    "top5": 25,
-    "top10": 30,
-    "top20": 34,
+    "ranked": 53,
+    "top5": 40,
+    "top10": 45,
+    "top20": 49,
     "unranked": 42
   },
   "results": [
@@ -29,14 +29,14 @@
       "keyword": "social media content generator",
       "rank": null,
       "score": null,
-      "topScore": 2.1390543309207266
+      "topScore": 2.139086875056774
     },
     {
       "skill": "ima-all-ai",
       "keyword": "AI creative generator",
       "rank": null,
       "score": null,
-      "topScore": 3.0854241251945496
+      "topScore": 3.085437774658203
     },
     {
       "skill": "ima-all-ai",
@@ -139,7 +139,7 @@
     {
       "skill": "ima-image-ai",
       "keyword": "AI thumbnail generator",
-      "rank": 27,
+      "rank": 26,
       "score": 0.9428678550922458,
       "topScore": 1.633410429954529
     },
@@ -162,14 +162,14 @@
       "keyword": "AI voice generator",
       "rank": null,
       "score": null,
-      "topScore": 1.2065454694555915
+      "topScore": 3.0148220658302307
     },
     {
       "skill": "ima-voice-ai",
       "keyword": "AI voiceover generator",
       "rank": null,
       "score": null,
-      "topScore": 1.2529432746695197
+      "topScore": 1.6325388908386231
     },
     {
       "skill": "ima-voice-ai",
@@ -211,7 +211,7 @@
       "keyword": "AI brief generator",
       "rank": null,
       "score": null,
-      "topScore": 1.138276146694893
+      "topScore": 1.13827960376429
     },
     {
       "skill": "ima-knowledge-ai",
@@ -225,7 +225,7 @@
       "keyword": "script generator",
       "rank": null,
       "score": null,
-      "topScore": 3.6057990962532935
+      "topScore": 3.6057962352303443
     },
     {
       "skill": "ima-knowledge-ai",
@@ -330,7 +330,7 @@
       "keyword": "AI voice generator",
       "rank": 48,
       "score": 0.9284634374756815,
-      "topScore": 1.2065454694555915
+      "topScore": 3.0148220658302307
     },
     {
       "skill": "ima-tts-ai",
@@ -413,15 +413,15 @@
       "skill": "ima-ai-creative-content-generator",
       "keyword": "AI content generator",
       "rank": 3,
-      "score": 3.0727293491363525,
-      "topScore": 3.468120338487857
+      "score": 3.072748124599457,
+      "topScore": 3.4681847115042146
     },
     {
       "skill": "ima-ai-creative-content-generator",
       "keyword": "AI creative generator",
       "rank": 1,
-      "score": 3.0854241251945496,
-      "topScore": 3.0854241251945496
+      "score": 3.085437774658203,
+      "topScore": 3.085437774658203
     },
     {
       "skill": "ima-ai-creative-content-generator",
@@ -441,8 +441,8 @@
       "skill": "ima-ai-creative-content-generator",
       "keyword": "social media content generator",
       "rank": 2,
-      "score": 1.596384233236313,
-      "topScore": 2.1390543309207266
+      "score": 1.5963842034339906,
+      "topScore": 2.139086875056774
     },
     {
       "skill": "ima-ai-creative-content-generator",
@@ -461,9 +461,9 @@
     {
       "skill": "ima-ai-creative-content-generator",
       "keyword": "AI music generator",
-      "rank": 2,
+      "rank": 3,
       "score": 1.6467593669891358,
-      "topScore": 2.443301829091407
+      "topScore": 3.0897023677825928
     },
     {
       "skill": "ima-ai-creative-content-generator",
@@ -569,6 +569,111 @@
       "rank": 1,
       "score": 1.6209744572639466,
       "topScore": 1.6209744572639466
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI music generator",
+      "rank": 1,
+      "score": 3.0897023677825928,
+      "topScore": 3.0897023677825928
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "music generator",
+      "rank": 5,
+      "score": 2.954086095094681,
+      "topScore": 3.4561515235818394
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI song generator",
+      "rank": 1,
+      "score": 3.02763295173645,
+      "topScore": 3.02763295173645
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI BGM generator",
+      "rank": 1,
+      "score": 1.6542632341384889,
+      "topScore": 1.6542632341384889
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "background music generator",
+      "rank": 1,
+      "score": 1.5751185774803163,
+      "topScore": 1.5751185774803163
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI jingle generator",
+      "rank": 1,
+      "score": 1.5536928534507752,
+      "topScore": 1.5536928534507752
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI soundtrack generator",
+      "rank": 1,
+      "score": 1.6445793867111207,
+      "topScore": 1.6445793867111207
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI music maker",
+      "rank": 1,
+      "score": 1.6644670128822328,
+      "topScore": 1.6644670128822328
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI lyrics generator",
+      "rank": 1,
+      "score": 1.5529480040073396,
+      "topScore": 1.5529480040073396
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI music composition",
+      "rank": 1,
+      "score": 1.6398311018943788,
+      "topScore": 1.6398311018943788
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI beat maker",
+      "rank": 1,
+      "score": 1.5928084015846253,
+      "topScore": 1.5928084015846253
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI voice generator",
+      "rank": 1,
+      "score": 3.0148220658302307,
+      "topScore": 3.0148220658302307
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI voiceover generator",
+      "rank": 1,
+      "score": 1.6325388908386231,
+      "topScore": 1.6325388908386231
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "voiceover generator",
+      "rank": 3,
+      "score": 1.1,
+      "topScore": 1.1491529765014612
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI narration generator",
+      "rank": 1,
+      "score": 1.5599702954292298,
+      "topScore": 1.5599702954292298
     }
   ]
 }
