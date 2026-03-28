@@ -35,6 +35,39 @@ header h1 { font-size: 1.5rem; font-weight: 600; }
 header h1 span { color: var(--accent); }
 header .meta { color: var(--text-muted); font-size: 0.82rem; margin-top: 0.4rem; }
 
+/* Tab switcher */
+.tab-bar {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 1.25rem;
+}
+
+.tab-btn {
+  padding: 0.45rem 1.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  transition: all 0.15s;
+}
+
+.tab-btn:first-child { border-radius: 8px 0 0 8px; }
+.tab-btn:last-child { border-radius: 0 8px 8px 0; border-left: none; }
+
+.tab-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.tab-btn:not(.active):hover {
+  background: rgba(88,166,255,0.08);
+  color: var(--text);
+}
+
 /* Skill cards */
 .skills-grid {
   display: grid;
@@ -124,15 +157,10 @@ header .meta { color: var(--text-muted); font-size: 0.82rem; margin-top: 0.4rem;
   color: #fff;
 }
 
-/* 1-5: strong green */
 .rank-top5 { background: #1a7f37; }
-/* 6-10: muted teal */
 .rank-top10 { background: #3d6e56; }
-/* 11-25: olive/yellow-green */
 .rank-top25 { background: #7c6c1a; }
-/* 26-50: orange */
 .rank-top50 { background: #c4500a; }
-/* 50+: red */
 .rank-none { background: #b91c1c; font-weight: 600; font-size: 0.78rem; }
 
 .score-text {
@@ -141,6 +169,77 @@ header .meta { color: var(--text-muted); font-size: 0.82rem; margin-top: 0.4rem;
   font-variant-numeric: tabular-nums;
   min-width: 3rem;
   text-align: right;
+}
+
+/* By Words table */
+.words-table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+.words-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.words-table th {
+  text-align: left;
+  padding: 0.65rem 1rem;
+  border-bottom: 2px solid var(--border);
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.words-table td {
+  padding: 0.55rem 1rem;
+  border-bottom: 1px solid rgba(48,54,61,0.5);
+  vertical-align: middle;
+}
+
+.words-table tr:last-child td { border-bottom: none; }
+.words-table tr:hover td { background: rgba(88,166,255,0.04); }
+
+.words-table .kw-cell {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.words-table .kw-cell a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.words-table .kw-cell a:hover { color: var(--accent); }
+
+.words-table .ranks-cell {
+  font-variant-numeric: tabular-nums;
+}
+
+.rank-link {
+  text-decoration: none;
+  color: #fff;
+  padding: 0.15rem 0.45rem;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: inline-block;
+  margin: 0.1rem 0.15rem;
+  transition: opacity 0.15s;
+}
+
+.rank-link:hover { opacity: 0.8; }
+
+.rank-unranked {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 /* Legend */
@@ -218,6 +317,8 @@ footer a:hover { text-decoration: underline; }
 @media (max-width: 640px) {
   .skills-grid { grid-template-columns: 1fr; }
   .container { padding: 1rem; }
+  .words-table { font-size: 0.78rem; }
+  .words-table th, .words-table td { padding: 0.45rem 0.6rem; }
 }
 </style>
 </head>
@@ -227,6 +328,11 @@ footer a:hover { text-decoration: underline; }
     <h1>🐾 <span>IMA Skills</span> ClawHub Ranks</h1>
     <div class="meta" id="meta">Loading...</div>
   </header>
+
+  <div class="tab-bar">
+    <div class="tab-btn active" id="tab-skills" onclick="switchTab('skills')">By Skills</div>
+    <div class="tab-btn" id="tab-words" onclick="switchTab('words')">By Words</div>
+  </div>
 
   <div id="content"><div class="loading"><div class="spinner"></div><br>Fetching ranking data...</div></div>
 
@@ -240,26 +346,41 @@ footer a:hover { text-decoration: underline; }
 <script>
 const API = "https://api.wulong.dev/ima-rank/v1";
 
-let indexData = null; // { dates: [...], latest: "2026-03-26" }
+let indexData = null;
+let currentConfig = null;
+let currentSnapshot = null;
+let currentDate = null;
+let activeTab = "skills";
+
+function switchTab(tab) {
+  activeTab = tab;
+  document.getElementById("tab-skills").classList.toggle("active", tab === "skills");
+  document.getElementById("tab-words").classList.toggle("active", tab === "words");
+  if (currentConfig && currentSnapshot) {
+    if (tab === "skills") renderSkills(currentConfig, currentSnapshot);
+    else renderWords(currentConfig, currentSnapshot);
+  }
+}
 
 async function load(date) {
   try {
-    // Fetch index + config in parallel (always need these)
     const fetches = [fetch(`${API}/config`)];
     if (!indexData) fetches.push(fetch(`${API}/index`));
 
     const responses = await Promise.all(fetches);
-    const config = await responses[0].json();
+    currentConfig = await responses[0].json();
     if (responses[1]) indexData = await responses[1].json();
 
-    // Determine which date to load
     const targetDate = date || indexData.latest || (indexData.dates && indexData.dates[indexData.dates.length - 1]);
 
     const snapshotResp = await fetch(`${API}/snapshot?date=${targetDate}`);
     if (!snapshotResp.ok) throw new Error(`Snapshot not found for ${targetDate}`);
-    const snapshot = await snapshotResp.json();
+    currentSnapshot = await snapshotResp.json();
+    currentDate = targetDate;
 
-    render(config, snapshot, targetDate);
+    renderNav(targetDate);
+    if (activeTab === "skills") renderSkills(currentConfig, currentSnapshot);
+    else renderWords(currentConfig, currentSnapshot);
   } catch (e) {
     document.getElementById("content").innerHTML =
       `<div class="error-msg">Failed to load: ${esc(e.message)}</div>`;
@@ -272,35 +393,45 @@ function navigateTo(date) {
   load(date);
 }
 
-function render(config, snapshot, currentDate) {
-  // Build date nav
+function renderNav(currentDate) {
   const dates = indexData.dates;
   const idx = dates.indexOf(currentDate);
   const prevDate = idx > 0 ? dates[idx - 1] : null;
   const nextDate = idx < dates.length - 1 ? dates[idx + 1] : null;
 
   let navHtml = '<div class="date-nav">';
-  if (prevDate) {
-    navHtml += `<a onclick="navigateTo('${prevDate}')">← ${prevDate}</a>`;
-  } else {
-    navHtml += `<span class="disabled">← prev</span>`;
-  }
+  navHtml += prevDate
+    ? `<a onclick="navigateTo('${prevDate}')">← ${prevDate}</a>`
+    : `<span class="disabled">← prev</span>`;
   navHtml += `<span class="current">${currentDate}</span>`;
-  if (nextDate) {
-    navHtml += `<a onclick="navigateTo('${nextDate}')">${nextDate} →</a>`;
-  } else {
-    navHtml += `<span class="disabled">next →</span>`;
-  }
+  navHtml += nextDate
+    ? `<a onclick="navigateTo('${nextDate}')">${nextDate} →</a>`
+    : `<span class="disabled">next →</span>`;
   navHtml += '</div>';
   document.getElementById("meta").innerHTML = navHtml;
+}
 
-  // Build lookup: skill+keyword → result
+function rankClass(rank) {
+  if (rank === null) return "rank-none";
+  if (rank <= 5) return "rank-top5";
+  if (rank <= 10) return "rank-top10";
+  if (rank <= 25) return "rank-top25";
+  return "rank-top50";
+}
+
+function rankBg(rank) {
+  if (rank <= 5) return "#1a7f37";
+  if (rank <= 10) return "#3d6e56";
+  if (rank <= 25) return "#7c6c1a";
+  return "#c4500a";
+}
+
+function renderSkills(config, snapshot) {
   const lookup = {};
   for (const r of snapshot.results) {
     lookup[`${r.skill}|${r.keyword}`] = r;
   }
 
-  // Skill cards
   let html = '<div class="skills-grid">';
 
   for (const skill of config.skills) {
@@ -328,12 +459,7 @@ function render(config, snapshot, currentDate) {
     });
 
     for (const r of sorted) {
-      const cls = r.rank === null ? "rank-none"
-        : r.rank <= 5 ? "rank-top5"
-        : r.rank <= 10 ? "rank-top10"
-        : r.rank <= 25 ? "rank-top25"
-        : "rank-top50";
-
+      const cls = rankClass(r.rank);
       const rankText = r.rank === null ? `${snapshot.searchLimit}+` : `#${r.rank}`;
       const scoreText = r.score != null ? r.score.toFixed(2) : "";
 
@@ -352,9 +478,75 @@ function render(config, snapshot, currentDate) {
   document.getElementById("content").innerHTML = html;
 }
 
+function renderWords(config, snapshot) {
+  // Build lookup: keyword → [{skill, slug, rank, score}, ...]
+  const byWord = {};
+  for (const r of snapshot.results) {
+    if (!byWord[r.keyword]) byWord[r.keyword] = [];
+    byWord[r.keyword].push(r);
+  }
+
+  // Collect all unique keywords (preserve order from config)
+  const seenKw = new Set();
+  const allKeywords = [];
+  for (const skill of config.skills) {
+    for (const kw of skill.keywords) {
+      if (!seenKw.has(kw)) {
+        seenKw.add(kw);
+        allKeywords.push(kw);
+      }
+    }
+  }
+
+  // Sort: keywords with best ranks first
+  allKeywords.sort((a, b) => {
+    const aEntries = (byWord[a] || []).filter(r => r.rank !== null);
+    const bEntries = (byWord[b] || []).filter(r => r.rank !== null);
+    const aBest = aEntries.length ? Math.min(...aEntries.map(r => r.rank)) : 9999;
+    const bBest = bEntries.length ? Math.min(...bEntries.map(r => r.rank)) : 9999;
+    return aBest - bBest;
+  });
+
+  // Build slug→displayName map
+  const slugToName = {};
+  for (const skill of config.skills) {
+    slugToName[skill.slug] = skill.displayName;
+  }
+
+  let html = '<div class="words-table-wrap"><table class="words-table">';
+  html += '<thead><tr><th>Keyword</th><th>Our Rankings</th></tr></thead>';
+  html += '<tbody>';
+
+  for (const kw of allKeywords) {
+    const entries = (byWord[kw] || []).filter(r => r.rank !== null);
+    // Sort by rank ascending
+    entries.sort((a, b) => a.rank - b.rank);
+
+    html += '<tr>';
+    html += `<td class="kw-cell"><a href="https://clawhub.ai/skills?q=${encodeURIComponent(kw)}" target="_blank">${esc(kw)}</a></td>`;
+    html += '<td class="ranks-cell">';
+
+    if (entries.length === 0) {
+      html += `<span class="rank-unranked">${snapshot.searchLimit}+</span>`;
+    } else {
+      const parts = entries.map(r => {
+        const bg = rankBg(r.rank);
+        const title = slugToName[r.skill] || r.skill;
+        return `<a href="https://clawhub.ai/skills/${encodeURIComponent(r.skill)}" target="_blank" class="rank-link" style="background:${bg}" title="${esc(title)}">#${r.rank}</a>`;
+      });
+      html += parts.join(' ');
+    }
+
+    html += '</td></tr>';
+  }
+
+  html += '</tbody></table></div>';
+  document.getElementById("content").innerHTML = html;
+}
+
 function esc(s) {
   if (!s) return "";
-  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 }
 
 load();
