@@ -139,6 +139,27 @@
         "AI logo generator",
         "AI illustration generator"
       ]
+    },
+    {
+      "slug": "ima-ai-music-song-voice-generator",
+      "displayName": "IMA Studio Music & Voice (SDO)",
+      "keywords": [
+        "AI music generator",
+        "music generator",
+        "AI song generator",
+        "AI BGM generator",
+        "background music generator",
+        "AI jingle generator",
+        "AI soundtrack generator",
+        "AI music maker",
+        "AI lyrics generator",
+        "AI music composition",
+        "AI beat maker",
+        "AI voice generator",
+        "AI voiceover generator",
+        "voiceover generator",
+        "AI narration generator"
+      ]
     }
   ]
 }
