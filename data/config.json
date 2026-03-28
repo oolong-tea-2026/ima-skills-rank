@@ -103,6 +103,24 @@
         "ima",
         "ima studio"
       ]
+    },
+    {
+      "slug": "ima-ai-creative-content-generator",
+      "displayName": "IMA AI Creative Content Generator (SDO)",
+      "keywords": [
+        "AI generator",
+        "AI content generator",
+        "AI creative generator",
+        "AI ad generator",
+        "AI marketing content generator",
+        "social media content generator",
+        "AI image generator",
+        "AI video generator",
+        "AI music generator",
+        "AI content creation",
+        "multimodal AI generator",
+        "all in one AI generator"
+      ]
     }
   ]
 }
