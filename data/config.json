@@ -121,6 +121,24 @@
         "multimodal AI generator",
         "all in one AI generator"
       ]
+    },
+    {
+      "slug": "ima-ai-image-photo-generator",
+      "displayName": "IMA Studio Image (SDO)",
+      "keywords": [
+        "AI image generator",
+        "image generator",
+        "AI poster generator",
+        "AI thumbnail generator",
+        "thumbnail generator",
+        "AI art generator",
+        "AI photo generator",
+        "product photo generator",
+        "AI graphic design",
+        "social media image generator",
+        "AI logo generator",
+        "AI illustration generator"
+      ]
     }
   ]
 }
