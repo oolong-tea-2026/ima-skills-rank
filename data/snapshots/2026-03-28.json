@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-03-28T08:26:38.144Z",
+  "timestamp": "2026-03-28T10:24:20.046Z",
   "searchLimit": 50,
-  "totalCombos": 68,
+  "totalCombos": 80,
   "summary": {
-    "ranked": 26,
-    "top5": 14,
-    "top10": 18,
-    "top20": 22,
+    "ranked": 38,
+    "top5": 25,
+    "top10": 30,
+    "top20": 34,
     "unranked": 42
   },
   "results": [
@@ -22,7 +22,7 @@
       "keyword": "AI ad generator",
       "rank": null,
       "score": null,
-      "topScore": 2.185424368862316
+      "topScore": 2.185386251691982
     },
     {
       "skill": "ima-all-ai",
@@ -36,7 +36,7 @@
       "keyword": "AI creative generator",
       "rank": null,
       "score": null,
-      "topScore": 3.085437774658203
+      "topScore": 3.0854241251945496
     },
     {
       "skill": "ima-all-ai",
@@ -111,7 +111,7 @@
     {
       "skill": "ima-image-ai",
       "keyword": "AI image generator",
-      "rank": 47,
+      "rank": 48,
       "score": 0.956950078269202,
       "topScore": 3.1215248581699866
     },
@@ -127,7 +127,7 @@
       "keyword": "AI poster generator",
       "rank": null,
       "score": null,
-      "topScore": 1.1439460063759748
+      "topScore": 1.5919500946998597
     },
     {
       "skill": "ima-image-ai",
@@ -139,9 +139,9 @@
     {
       "skill": "ima-image-ai",
       "keyword": "AI thumbnail generator",
-      "rank": 26,
+      "rank": 27,
       "score": 0.9428678550922458,
-      "topScore": 1.2149787092987958
+      "topScore": 1.633410429954529
     },
     {
       "skill": "ima-image-ai",
@@ -218,14 +218,14 @@
       "keyword": "content brief generator",
       "rank": null,
       "score": null,
-      "topScore": 3.364363478539402
+      "topScore": 3.36443035495084
     },
     {
       "skill": "ima-knowledge-ai",
       "keyword": "script generator",
       "rank": null,
       "score": null,
-      "topScore": 3.6057938510445533
+      "topScore": 3.6057990962532935
     },
     {
       "skill": "ima-knowledge-ai",
@@ -239,12 +239,12 @@
       "keyword": "AI research assistant",
       "rank": null,
       "score": null,
-      "topScore": 1.2203882025878379
+      "topScore": 1.2203901695411155
     },
     {
       "skill": "ima-knowledge-ai",
       "keyword": "ima",
-      "rank": 11,
+      "rank": 12,
       "score": 2.761968222722664,
       "topScore": 3.3639407412016915
     },
@@ -281,14 +281,14 @@
       "keyword": "AI art generator",
       "rank": null,
       "score": null,
-      "topScore": 1.2097213710133496
+      "topScore": 1.6425722599029542
     },
     {
       "skill": "ai-nano-banana-ima",
       "keyword": "social media image generator",
       "rank": null,
       "score": null,
-      "topScore": 1.5487436413764955
+      "topScore": 1.5917904436588288
     },
     {
       "skill": "ai-nano-banana-ima",
@@ -420,15 +420,15 @@
       "skill": "ima-ai-creative-content-generator",
       "keyword": "AI creative generator",
       "rank": 1,
-      "score": 3.085437774658203,
-      "topScore": 3.085437774658203
+      "score": 3.0854241251945496,
+      "topScore": 3.0854241251945496
     },
     {
       "skill": "ima-ai-creative-content-generator",
       "keyword": "AI ad generator",
       "rank": 2,
-      "score": 1.651899254322052,
-      "topScore": 2.185424368862316
+      "score": 1.6518391132354737,
+      "topScore": 2.185386251691982
     },
     {
       "skill": "ima-ai-creative-content-generator",
@@ -447,7 +447,7 @@
     {
       "skill": "ima-ai-creative-content-generator",
       "keyword": "AI image generator",
-      "rank": 9,
+      "rank": 10,
       "score": 1.6021557211875916,
       "topScore": 3.1215248581699866
     },
@@ -485,6 +485,90 @@
       "rank": null,
       "score": null,
       "topScore": 1.2201352145042426
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "AI image generator",
+      "rank": 2,
+      "score": 3.0595489144325256,
+      "topScore": 3.1215248581699866
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "image generator",
+      "rank": 9,
+      "score": 2.984859824180603,
+      "topScore": 3.3843564623750932
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "AI poster generator",
+      "rank": 1,
+      "score": 1.5919500946998597,
+      "topScore": 1.5919500946998597
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "AI thumbnail generator",
+      "rank": 1,
+      "score": 1.633410429954529,
+      "topScore": 1.633410429954529
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "thumbnail generator",
+      "rank": 2,
+      "score": 1.4854539394378663,
+      "topScore": 3.3266708221594286
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "AI art generator",
+      "rank": 1,
+      "score": 1.6425722599029542,
+      "topScore": 1.6425722599029542
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "AI photo generator",
+      "rank": 1,
+      "score": 3.0651983618736267,
+      "topScore": 3.0651983618736267
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "product photo generator",
+      "rank": 1,
+      "score": 1.586144244670868,
+      "topScore": 1.586144244670868
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "AI graphic design",
+      "rank": 2,
+      "score": 1.5701058864593507,
+      "topScore": 1.99019813941276
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "social media image generator",
+      "rank": 1,
+      "score": 1.5917904436588288,
+      "topScore": 1.5917904436588288
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "AI logo generator",
+      "rank": 2,
+      "score": 1.651893174648285,
+      "topScore": 3.371748476960369
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "AI illustration generator",
+      "rank": 1,
+      "score": 1.6209744572639466,
+      "topScore": 1.6209744572639466
     }
   ]
 }
