@@ -436,6 +436,7 @@ function renderSkills(config, snapshot) {
 
   for (const skill of config.skills) {
     const skillResults = skill.keywords.map(kw => lookup[`${skill.slug}|${kw}`]).filter(Boolean);
+    if (skillResults.length === 0) continue; // skip skills not present in this snapshot
     const ranked = skillResults.filter(r => r.rank !== null);
     const bestRank = ranked.length ? Math.min(...ranked.map(r => r.rank)) : null;
 
@@ -486,12 +487,12 @@ function renderWords(config, snapshot) {
     byWord[r.keyword].push(r);
   }
 
-  // Collect all unique keywords (preserve order from config)
+  // Collect all unique keywords that exist in this snapshot
   const seenKw = new Set();
   const allKeywords = [];
   for (const skill of config.skills) {
     for (const kw of skill.keywords) {
-      if (!seenKw.has(kw)) {
+      if (!seenKw.has(kw) && byWord[kw]) {
         seenKw.add(kw);
         allKeywords.push(kw);
       }
