@@ -402,11 +402,11 @@ function renderNav(currentDate) {
   let navHtml = '<div class="date-nav">';
   navHtml += prevDate
     ? `<a onclick="navigateTo('${prevDate}')">← ${prevDate}</a>`
-    : `<span class="disabled">← prev</span>`;
+    : '';
   navHtml += `<span class="current">${currentDate}</span>`;
   navHtml += nextDate
     ? `<a onclick="navigateTo('${nextDate}')">${nextDate} →</a>`
-    : `<span class="disabled">next →</span>`;
+    : '';
   navHtml += '</div>';
   document.getElementById("meta").innerHTML = navHtml;
 }
