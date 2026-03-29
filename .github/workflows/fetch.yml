@@ -2,8 +2,8 @@ name: Fetch Rankings
 
 on:
   schedule:
-    # Run daily at 09:00 UTC (17:00 CST)
-    - cron: '13 9 * * *'
+    # Run daily at 01:23 UTC (09:23 CST)
+    - cron: '23 1 * * *'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
