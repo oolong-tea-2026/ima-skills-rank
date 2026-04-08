@@ -1,0 +1,679 @@
+{
+  "timestamp": "2026-04-08T04:12:48.752Z",
+  "searchLimit": 50,
+  "totalCombos": 95,
+  "summary": {
+    "ranked": 62,
+    "top5": 41,
+    "top10": 49,
+    "top20": 57,
+    "unranked": 33
+  },
+  "results": [
+    {
+      "skill": "ima-all-ai",
+      "keyword": "AI generator",
+      "rank": null,
+      "score": null,
+      "topScore": 3.442395862573743
+    },
+    {
+      "skill": "ima-all-ai",
+      "keyword": "AI ad generator",
+      "rank": null,
+      "score": null,
+      "topScore": 2.224402508199593
+    },
+    {
+      "skill": "ima-all-ai",
+      "keyword": "social media content generator",
+      "rank": null,
+      "score": null,
+      "topScore": 2.160442077785683
+    },
+    {
+      "skill": "ima-all-ai",
+      "keyword": "AI creative generator",
+      "rank": null,
+      "score": null,
+      "topScore": 3.474222767007137
+    },
+    {
+      "skill": "ima-all-ai",
+      "keyword": "AI marketing content generator",
+      "rank": null,
+      "score": null,
+      "topScore": 2.0814203258869894
+    },
+    {
+      "skill": "ima-all-ai",
+      "keyword": "ima",
+      "rank": 2,
+      "score": 3.3741579847412533,
+      "topScore": 3.3839989422819245
+    },
+    {
+      "skill": "ima-all-ai",
+      "keyword": "ima studio",
+      "rank": null,
+      "score": null,
+      "topScore": 0.903485326227072
+    },
+    {
+      "skill": "ima-video-ai",
+      "keyword": "AI video generator",
+      "rank": null,
+      "score": null,
+      "topScore": 3.6164836254063846
+    },
+    {
+      "skill": "ima-video-ai",
+      "keyword": "video generator",
+      "rank": null,
+      "score": null,
+      "topScore": 3.471753534311414
+    },
+    {
+      "skill": "ima-video-ai",
+      "keyword": "short video generator",
+      "rank": null,
+      "score": null,
+      "topScore": 3.4337849143120223
+    },
+    {
+      "skill": "ima-video-ai",
+      "keyword": "promo video generator",
+      "rank": null,
+      "score": null,
+      "topScore": 2.1263674225751164
+    },
+    {
+      "skill": "ima-video-ai",
+      "keyword": "image to video",
+      "rank": null,
+      "score": null,
+      "topScore": 3.4996393527050924
+    },
+    {
+      "skill": "ima-video-ai",
+      "keyword": "ima",
+      "rank": 4,
+      "score": 3.340731429686313,
+      "topScore": 3.3839989422819245
+    },
+    {
+      "skill": "ima-video-ai",
+      "keyword": "ima studio",
+      "rank": null,
+      "score": null,
+      "topScore": 0.903485326227072
+    },
+    {
+      "skill": "ima-image-ai",
+      "keyword": "AI image generator",
+      "rank": 7,
+      "score": 2.095816715633587,
+      "topScore": 3.5439335549978277
+    },
+    {
+      "skill": "ima-image-ai",
+      "keyword": "image generator",
+      "rank": null,
+      "score": null,
+      "topScore": 3.4963324421080246
+    },
+    {
+      "skill": "ima-image-ai",
+      "keyword": "AI poster generator",
+      "rank": null,
+      "score": null,
+      "topScore": 2.0064927787232265
+    },
+    {
+      "skill": "ima-image-ai",
+      "keyword": "thumbnail generator",
+      "rank": null,
+      "score": null,
+      "topScore": 3.385879155251246
+    },
+    {
+      "skill": "ima-image-ai",
+      "keyword": "AI thumbnail generator",
+      "rank": 1,
+      "score": 2.0793145736810725,
+      "topScore": 2.0793145736810725
+    },
+    {
+      "skill": "ima-image-ai",
+      "keyword": "ima",
+      "rank": 3,
+      "score": 3.371732809221462,
+      "topScore": 3.3839989422819245
+    },
+    {
+      "skill": "ima-image-ai",
+      "keyword": "ima studio",
+      "rank": null,
+      "score": null,
+      "topScore": 0.903485326227072
+    },
+    {
+      "skill": "ima-voice-ai",
+      "keyword": "AI voice generator",
+      "rank": 25,
+      "score": 1.0503552999437753,
+      "topScore": 3.376565151994154
+    },
+    {
+      "skill": "ima-voice-ai",
+      "keyword": "AI voiceover generator",
+      "rank": 20,
+      "score": 1.0747361030519906,
+      "topScore": 1.9942819770025464
+    },
+    {
+      "skill": "ima-voice-ai",
+      "keyword": "voiceover generator",
+      "rank": 12,
+      "score": 0.9401491429747049,
+      "topScore": 1.1647286790809361
+    },
+    {
+      "skill": "ima-voice-ai",
+      "keyword": "AI narration",
+      "rank": null,
+      "score": null,
+      "topScore": 1.0895841956793113
+    },
+    {
+      "skill": "ima-voice-ai",
+      "keyword": "narration generator",
+      "rank": null,
+      "score": null,
+      "topScore": 1.1310814958100808
+    },
+    {
+      "skill": "ima-voice-ai",
+      "keyword": "ima",
+      "rank": null,
+      "score": null,
+      "topScore": 3.3839989422819245
+    },
+    {
+      "skill": "ima-voice-ai",
+      "keyword": "ima studio",
+      "rank": 10,
+      "score": 0.7972891178072397,
+      "topScore": 0.903485326227072
+    },
+    {
+      "skill": "ima-knowledge-ai",
+      "keyword": "AI brief generator",
+      "rank": null,
+      "score": null,
+      "topScore": 1.2409259756541908
+    },
+    {
+      "skill": "ima-knowledge-ai",
+      "keyword": "content brief generator",
+      "rank": null,
+      "score": null,
+      "topScore": 3.412175640680561
+    },
+    {
+      "skill": "ima-knowledge-ai",
+      "keyword": "script generator",
+      "rank": null,
+      "score": null,
+      "topScore": 3.6241145566757034
+    },
+    {
+      "skill": "ima-knowledge-ai",
+      "keyword": "outline generator",
+      "rank": null,
+      "score": null,
+      "topScore": 1.2658646306513734
+    },
+    {
+      "skill": "ima-knowledge-ai",
+      "keyword": "AI research assistant",
+      "rank": null,
+      "score": null,
+      "topScore": 2.527829520600163
+    },
+    {
+      "skill": "ima-knowledge-ai",
+      "keyword": "ima",
+      "rank": 14,
+      "score": 2.7746778143833764,
+      "topScore": 3.3839989422819245
+    },
+    {
+      "skill": "ima-knowledge-ai",
+      "keyword": "ima studio",
+      "rank": null,
+      "score": null,
+      "topScore": 0.903485326227072
+    },
+    {
+      "skill": "ai-nano-banana-ima",
+      "keyword": "AI image generator",
+      "rank": null,
+      "score": null,
+      "topScore": 3.5439335549978277
+    },
+    {
+      "skill": "ai-nano-banana-ima",
+      "keyword": "character generator",
+      "rank": null,
+      "score": null,
+      "topScore": 3.364463095836523
+    },
+    {
+      "skill": "ai-nano-banana-ima",
+      "keyword": "meme generator",
+      "rank": null,
+      "score": null,
+      "topScore": 3.5651003022872283
+    },
+    {
+      "skill": "ai-nano-banana-ima",
+      "keyword": "AI art generator",
+      "rank": null,
+      "score": null,
+      "topScore": 2.057114943926321
+    },
+    {
+      "skill": "ai-nano-banana-ima",
+      "keyword": "social media image generator",
+      "rank": null,
+      "score": null,
+      "topScore": 2.0063331276821956
+    },
+    {
+      "skill": "ai-nano-banana-ima",
+      "keyword": "ima",
+      "rank": 5,
+      "score": 3.2897871540770884,
+      "topScore": 3.3839989422819245
+    },
+    {
+      "skill": "ai-nano-banana-ima",
+      "keyword": "ima studio",
+      "rank": null,
+      "score": null,
+      "topScore": 0.903485326227072
+    },
+    {
+      "skill": "ima-tts-ai",
+      "keyword": "text to speech",
+      "rank": 6,
+      "score": 2.089190039500847,
+      "topScore": 3.5452835678388803
+    },
+    {
+      "skill": "ima-tts-ai",
+      "keyword": "AI text to speech",
+      "rank": 1,
+      "score": 2.1945782934280778,
+      "topScore": 2.1945782934280778
+    },
+    {
+      "skill": "ima-tts-ai",
+      "keyword": "TTS generator",
+      "rank": 29,
+      "score": 1.0223349009605789,
+      "topScore": 3.3075110247529564
+    },
+    {
+      "skill": "ima-tts-ai",
+      "keyword": "AI voice generator",
+      "rank": 21,
+      "score": 1.067245093450203,
+      "topScore": 3.376565151994154
+    },
+    {
+      "skill": "ima-tts-ai",
+      "keyword": "voiceover generator",
+      "rank": 7,
+      "score": 0.9952343379112624,
+      "topScore": 1.1647286790809361
+    },
+    {
+      "skill": "ima-tts-ai",
+      "keyword": "ima",
+      "rank": 6,
+      "score": 3.2744547997566604,
+      "topScore": 3.3839989422819245
+    },
+    {
+      "skill": "ima-tts-ai",
+      "keyword": "ima studio",
+      "rank": 13,
+      "score": 0.7630123172851943,
+      "topScore": 0.903485326227072
+    },
+    {
+      "skill": "ima-ai-video-generator",
+      "keyword": "AI video generator",
+      "rank": 1,
+      "score": 3.6164836254063846,
+      "topScore": 3.6164836254063846
+    },
+    {
+      "skill": "ima-ai-video-generator",
+      "keyword": "video generator",
+      "rank": 1,
+      "score": 3.471753534311414,
+      "topScore": 3.471753534311414
+    },
+    {
+      "skill": "ima-ai-video-generator",
+      "keyword": "short video generator",
+      "rank": 3,
+      "score": 2.120800050729871,
+      "topScore": 3.4337849143120223
+    },
+    {
+      "skill": "ima-ai-video-generator",
+      "keyword": "promo video generator",
+      "rank": 1,
+      "score": 2.1263674225751164,
+      "topScore": 2.1263674225751164
+    },
+    {
+      "skill": "ima-ai-video-generator",
+      "keyword": "image to video",
+      "rank": 16,
+      "score": 2.0240918722096684,
+      "topScore": 3.4996393527050924
+    },
+    {
+      "skill": "ima-ai-video-generator",
+      "keyword": "ima",
+      "rank": 7,
+      "score": 3.271457847589612,
+      "topScore": 3.3839989422819245
+    },
+    {
+      "skill": "ima-ai-video-generator",
+      "keyword": "ima studio",
+      "rank": 12,
+      "score": 0.7636566128674747,
+      "topScore": 0.903485326227072
+    },
+    {
+      "skill": "ima-ai-creative-content-generator",
+      "keyword": "AI generator",
+      "rank": 6,
+      "score": 3.346301543366695,
+      "topScore": 3.442395862573743
+    },
+    {
+      "skill": "ima-ai-creative-content-generator",
+      "keyword": "AI content generator",
+      "rank": 2,
+      "score": 3.4615143414852865,
+      "topScore": 3.4795056362622776
+    },
+    {
+      "skill": "ima-ai-creative-content-generator",
+      "keyword": "AI creative generator",
+      "rank": 1,
+      "score": 3.474222767007137,
+      "topScore": 3.474222767007137
+    },
+    {
+      "skill": "ima-ai-creative-content-generator",
+      "keyword": "AI ad generator",
+      "rank": 2,
+      "score": 2.0406241055844077,
+      "topScore": 2.224402508199593
+    },
+    {
+      "skill": "ima-ai-creative-content-generator",
+      "keyword": "AI marketing content generator",
+      "rank": 1,
+      "score": 2.0814203258869894,
+      "topScore": 2.0814203258869894
+    },
+    {
+      "skill": "ima-ai-creative-content-generator",
+      "keyword": "social media content generator",
+      "rank": 2,
+      "score": 1.9851692255852467,
+      "topScore": 2.160442077785683
+    },
+    {
+      "skill": "ima-ai-creative-content-generator",
+      "keyword": "AI image generator",
+      "rank": 11,
+      "score": 1.9909407135365254,
+      "topScore": 3.5439335549978277
+    },
+    {
+      "skill": "ima-ai-creative-content-generator",
+      "keyword": "AI video generator",
+      "rank": 13,
+      "score": 2.027300321709896,
+      "topScore": 3.6164836254063846
+    },
+    {
+      "skill": "ima-ai-creative-content-generator",
+      "keyword": "AI music generator",
+      "rank": 9,
+      "score": 2.0355443593380698,
+      "topScore": 3.451445453946516
+    },
+    {
+      "skill": "ima-ai-creative-content-generator",
+      "keyword": "AI content creation",
+      "rank": 1,
+      "score": 2.0312735673306235,
+      "topScore": 2.0312735673306235
+    },
+    {
+      "skill": "ima-ai-creative-content-generator",
+      "keyword": "multimodal AI generator",
+      "rank": 33,
+      "score": 0.9484284397480731,
+      "topScore": 1.1830199850839962
+    },
+    {
+      "skill": "ima-ai-creative-content-generator",
+      "keyword": "all in one AI generator",
+      "rank": 50,
+      "score": 0.9179186102268939,
+      "topScore": 1.1850065780920376
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "AI image generator",
+      "rank": 2,
+      "score": 3.4740915984558924,
+      "topScore": 3.5439335549978277
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "image generator",
+      "rank": 5,
+      "score": 3.39940250820397,
+      "topScore": 3.4963324421080246
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "AI poster generator",
+      "rank": 1,
+      "score": 2.0064927787232265,
+      "topScore": 2.0064927787232265
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "AI thumbnail generator",
+      "rank": 2,
+      "score": 2.0479531139778957,
+      "topScore": 2.0793145736810725
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "thumbnail generator",
+      "rank": null,
+      "score": null,
+      "topScore": 3.385879155251246
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "AI art generator",
+      "rank": 1,
+      "score": 2.057114943926321,
+      "topScore": 2.057114943926321
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "AI photo generator",
+      "rank": 1,
+      "score": 3.4797410458969935,
+      "topScore": 3.4797410458969935
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "product photo generator",
+      "rank": 1,
+      "score": 2.000686928694235,
+      "topScore": 2.000686928694235
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "AI graphic design",
+      "rank": 2,
+      "score": 1.9846485704827175,
+      "topScore": 2.047082787982878
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "social media image generator",
+      "rank": 1,
+      "score": 2.0063331276821956,
+      "topScore": 2.0063331276821956
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "AI logo generator",
+      "rank": 3,
+      "score": 2.066435858671652,
+      "topScore": 3.4245480748198127
+    },
+    {
+      "skill": "ima-ai-image-photo-generator",
+      "keyword": "AI illustration generator",
+      "rank": 1,
+      "score": 2.0355171412873134,
+      "topScore": 2.0355171412873134
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI music generator",
+      "rank": 1,
+      "score": 3.451445453946516,
+      "topScore": 3.451445453946516
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "music generator",
+      "rank": 4,
+      "score": 3.315829181258604,
+      "topScore": 3.4748595951887813
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI song generator",
+      "rank": 1,
+      "score": 3.3893760379003735,
+      "topScore": 3.3893760379003735
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI BGM generator",
+      "rank": 1,
+      "score": 2.016006320302412,
+      "topScore": 2.016006320302412
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "background music generator",
+      "rank": 1,
+      "score": 1.9368616636442395,
+      "topScore": 1.9368616636442395
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI jingle generator",
+      "rank": 1,
+      "score": 1.9154647882627698,
+      "topScore": 1.9154647882627698
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI soundtrack generator",
+      "rank": 1,
+      "score": 2.006322472875044,
+      "topScore": 2.006322472875044
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI music maker",
+      "rank": 1,
+      "score": 2.026210099046156,
+      "topScore": 2.026210099046156
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI lyrics generator",
+      "rank": 1,
+      "score": 1.9146910901712628,
+      "topScore": 1.9146910901712628
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI music composition",
+      "rank": 1,
+      "score": 2.001574188058302,
+      "topScore": 2.001574188058302
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI beat maker",
+      "rank": 1,
+      "score": 1.9545514877485486,
+      "topScore": 1.9545514877485486
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI voice generator",
+      "rank": 1,
+      "score": 3.376565151994154,
+      "topScore": 3.376565151994154
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI voiceover generator",
+      "rank": 1,
+      "score": 1.9942819770025464,
+      "topScore": 1.9942819770025464
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "voiceover generator",
+      "rank": null,
+      "score": null,
+      "topScore": 1.1647286790809361
+    },
+    {
+      "skill": "ima-ai-music-song-voice-generator",
+      "keyword": "AI narration generator",
+      "rank": 1,
+      "score": 1.921713381593153,
+      "topScore": 1.921713381593153
+    }
+  ]
+}
