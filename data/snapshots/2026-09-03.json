@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-03T02:09:06.576Z",
+  "timestamp": "2026-09-03T06:01:57.769Z",
   "searchLimit": 50,
   "totalCombos": 105,
   "summary": {
@@ -168,7 +168,7 @@
       "skill": "ima-voice-ai",
       "keyword": "AI voiceover generator",
       "rank": 2,
-      "score": 1000.5696522593498,
+      "score": 1000.5696904659271,
       "topScore": 5095
     },
     {
@@ -293,7 +293,7 @@
     {
       "skill": "ai-nano-banana-ima",
       "keyword": "ima",
-      "rank": 36,
+      "rank": 38,
       "score": 5095,
       "topScore": 6120
     },
@@ -307,7 +307,7 @@
     {
       "skill": "ima-tts-ai",
       "keyword": "text to speech",
-      "rank": 22,
+      "rank": 21,
       "score": 5095,
       "topScore": 3060
     },
